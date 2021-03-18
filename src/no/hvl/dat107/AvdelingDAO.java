@@ -4,25 +4,24 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class BedriftDAO {
+public class AvdelingDAO {
+
 	
-	private EntityManagerFactory emf;
+private EntityManagerFactory emf;
 	
-	public BedriftDAO()
+	public AvdelingDAO()
 	{
 		emf = Persistence.createEntityManagerFactory("bedriftPersistenceUnit");
 	}
 	
-	public Ansatt kontaktDatabase(int ansNr)
+	public Avdeling finnAvdelingMedId(int id)
 	{
 		EntityManager em = emf.createEntityManager();
 		try {
-        	return em.find(Ansatt.class, ansNr);
+        	return em.find(Avdeling.class, id);
 
         } finally {
             em.close();
         }
 	}
-	
-	
 }
