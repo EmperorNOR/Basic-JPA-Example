@@ -25,9 +25,9 @@ public class Prosjekt {
 	}
 	
 	@OneToMany(mappedBy = "ansatt")
-	private List<ProsjektDeltakelse> deltakelse;
+	private List<ProsjektAnsatte> deltakelse;
 	
-	public void LeggTilProsjekt(ProsjektDeltakelse ansatt)
+	public void LeggTilProsjekt(ProsjektAnsatte ansatt)
 	{
 		deltakelse.add(ansatt);
 	}

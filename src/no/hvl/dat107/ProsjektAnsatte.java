@@ -8,9 +8,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "prosjektansatte", schema = "oblig3")
-@IdClass(ProsjektDeltakelsePK.class)
-public class ProsjektDeltakelse {
+@Table(schema = "oblig3")
+@IdClass(ProsjektAnsattePK.class)
+public class ProsjektAnsatte {
 	
 	@Id
 	@ManyToOne
@@ -29,11 +29,11 @@ public class ProsjektDeltakelse {
 	
 	
 	
-	public ProsjektDeltakelse() {
+	public ProsjektAnsatte() {
 	
 	}
 	
-	public ProsjektDeltakelse(Ansatt ansatt, Prosjekt prosjekt, String rolle, int timer) {
+	public ProsjektAnsatte(Ansatt ansatt, Prosjekt prosjekt, String rolle, int timer) {
 		this.ansatt = ansatt;
 		this.prosjekt = prosjekt;
 		this.rolle = rolle;

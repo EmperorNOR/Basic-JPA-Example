@@ -1,19 +1,17 @@
 package no.hvl.dat107;
 
-import javax.persistence.Entity;
 
-
-public class ProsjektDeltakelsePK {
+public class ProsjektAnsattePK {
 
 	private int ansatt;
 	private int prosjekt;
 	
-	public ProsjektDeltakelsePK(int ansatt, int prosjekt) {
+	public ProsjektAnsattePK(int ansatt, int prosjekt) {
 		this.ansatt = ansatt;
 		this.prosjekt = prosjekt;
 	}
 	
-	public ProsjektDeltakelsePK() {
+	public ProsjektAnsattePK() {
 	}
 	
 	

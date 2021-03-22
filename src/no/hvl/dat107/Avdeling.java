@@ -29,7 +29,6 @@ public class Avdeling {
 	}
 
 	public Avdeling(String navn, int sjefId) {
-		super();
 		this.navn = navn;
 		this.sjefId = sjefId;
 	}
