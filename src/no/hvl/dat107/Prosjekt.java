@@ -1,9 +1,16 @@
 package no.hvl.dat107;
 
+import java.util.List;
+
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(schema = "oblig3")
 public class Prosjekt {
 	
 	@Id
@@ -15,6 +22,14 @@ public class Prosjekt {
 	public Prosjekt()
 	{
 		
+	}
+	
+	@OneToMany(mappedBy = "ansatt")
+	private List<ProsjektDeltakelse> deltakelse;
+	
+	public void LeggTilProsjekt(ProsjektDeltakelse ansatt)
+	{
+		deltakelse.add(ansatt);
 	}
 	
 	public Prosjekt(String navn, String beskrivelse) {

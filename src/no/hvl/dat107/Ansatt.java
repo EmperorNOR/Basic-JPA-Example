@@ -1,6 +1,7 @@
 package no.hvl.dat107;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,10 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema = "oblig 3")
+@Table(schema = "oblig3")
 public class Ansatt {
 	
 	@Id
@@ -28,11 +30,11 @@ public class Ansatt {
 	@JoinColumn(name = "id", referencedColumnName = "id")
 	private Avdeling avdeling;
 	
+	
 	public Ansatt()
 	{
 		
 	}
-	
 	
 	public Ansatt(String brukerNavn, String forNavn, String etterNavn, LocalDate ansettelsesDato, String stilling,
 			int lonn) {
@@ -45,7 +47,13 @@ public class Ansatt {
 		this.lonn = lonn;
 	}
 
-
+	@OneToMany(mappedBy = "prosjekt")
+	private List<ProsjektDeltakelse> deltakelse;
+	
+	public void LeggTilProsjekt(ProsjektDeltakelse prosjekt)
+	{
+		deltakelse.add(prosjekt);
+	}
 
 	public int getId() {
 		return id;

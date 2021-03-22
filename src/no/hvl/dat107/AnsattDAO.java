@@ -37,7 +37,6 @@ public class AnsattDAO {
 	        	String queryString = "SELECT a FROM Ansatte a WHERE initialer = :initialer";
 	        	TypedQuery<Ansatt> query = em.createQuery(queryString, Ansatt.class);
 	        	return query.getResultList();
-	        	
 	        } finally {
 	            em.close();
 	        }

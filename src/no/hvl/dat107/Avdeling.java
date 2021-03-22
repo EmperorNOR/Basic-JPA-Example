@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(schema = "oblig 3")
+@Table(schema = "oblig3")
 public class Avdeling {
 	
 	@Id
