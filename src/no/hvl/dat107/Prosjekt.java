@@ -32,6 +32,11 @@ public class Prosjekt {
 		deltakelse.add(ansatt);
 	}
 	
+	public void fjernAnsatt(ProsjektAnsatte ansatt)
+	{
+		deltakelse.remove(ansatt);
+	}
+	
 	public Prosjekt(String navn, String beskrivelse) {
 		this.navn = navn;
 		this.beskrivelse = beskrivelse;

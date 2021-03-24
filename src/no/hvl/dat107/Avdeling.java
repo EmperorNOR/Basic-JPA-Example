@@ -18,7 +18,7 @@ public class Avdeling {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String navn;
-	private int sjefId;
+	private Ansatt sjef;
 	
 	@OneToMany(mappedBy = "avdeling", fetch = FetchType.EAGER)
 	private List<Ansatt> ansatte;
@@ -28,9 +28,19 @@ public class Avdeling {
 		
 	}
 
-	public Avdeling(String navn, int sjefId) {
+	public Avdeling(String navn, Ansatt sjef) {
 		this.navn = navn;
-		this.sjefId = sjefId;
+		this.sjef = sjef;
+	}
+	
+	public void leggTilAnsatt(Ansatt ansatt)
+	{
+		ansatte.add(ansatt);
+	}
+	
+	public void fjernAnsatt(Ansatt ansatt)
+	{
+		ansatte.remove(ansatt);
 	}
 
 	public int getId() {
@@ -45,17 +55,18 @@ public class Avdeling {
 		this.navn = navn;
 	}
 
-	public int getSjefId() {
-		return sjefId;
+
+	public Ansatt getSjef() {
+		return sjef;
 	}
 
-	public void setSjefId(int sjefId) {
-		this.sjefId = sjefId;
+	public void setSjef(Ansatt sjef) {
+		this.sjef = sjef;
 	}
 
 	@Override
 	public String toString() {
-		return "Avdeling [id=" + id + ", navn=" + navn + ", sjefId=" + sjefId + ", ansatte=" + ansatte + "]";
+		return "Avdeling [id=" + id + ", navn=" + navn + ", sjefId=" + this.getSjef().getId() + ", ansatte=" + ansatte + "]";
 	}
 	
 	

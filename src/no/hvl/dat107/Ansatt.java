@@ -37,7 +37,7 @@ public class Ansatt {
 	}
 	
 	public Ansatt(String brukerNavn, String forNavn, String etterNavn, LocalDate ansettelsesDato, String stilling,
-			int lonn) {
+			int lonn, Avdeling avdeling) {
 
 		this.brukerNavn = brukerNavn;
 		this.forNavn = forNavn;
@@ -45,6 +45,7 @@ public class Ansatt {
 		this.ansettelsesDato = ansettelsesDato;
 		this.stilling = stilling;
 		this.lonn = lonn;
+		this.avdeling = avdeling;
 	}
 
 	@OneToMany(mappedBy = "prosjekt")
@@ -107,13 +108,20 @@ public class Ansatt {
 		this.lonn = lonn;
 	}
 
+	public Avdeling getAvdeling() {
+		return avdeling;
+	}
+
+	public void setAvdeling(Avdeling avdeling) {
+		this.avdeling = avdeling;
+	}
+
 	@Override
 	public String toString() {
 		return "Ansatt [id=" + id + ", brukerNavn=" + brukerNavn + ", forNavn=" + forNavn + ", etterNavn=" + etterNavn
-				+ ", ansettelsesDato=" + ansettelsesDato + ", stilling=" + stilling + ", lonn=" + lonn + "]";
+				+ ", ansettelsesDato=" + ansettelsesDato + ", stilling=" + stilling + ", lonn=" + lonn + ", avdeling="
+				+ avdeling + ", deltakelse=" + deltakelse + "]";
 	}
 
-	
-	
 
 }

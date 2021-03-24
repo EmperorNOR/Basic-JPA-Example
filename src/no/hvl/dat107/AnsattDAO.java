@@ -74,13 +74,13 @@ public class AnsattDAO {
 		}
 		
 		public Ansatt LeggTilAnsatt(String brukernavn, String fornavn, String etternavn, 
-				LocalDate ansettelsesdato, String stilling, int lonn)
+				LocalDate ansettelsesdato, String stilling, int lonn, Avdeling avdeling)
 		{
 			EntityManager em = emf.createEntityManager();
 			EntityTransaction tx = em.getTransaction();
 			try {
 				tx.begin();
-				Ansatt a = new Ansatt(brukernavn, fornavn, etternavn, ansettelsesdato, stilling, lonn);
+				Ansatt a = new Ansatt(brukernavn, fornavn, etternavn, ansettelsesdato, stilling, lonn, avdeling);
 				em.persist(a);
 				tx.commit();
 	        	return a;
