@@ -40,7 +40,7 @@ public class BrukerGrenseSnitt {
 				ansatt.setLonn(Integer.parseInt(JOptionPane.showInputDialog("Skriv in lonn")));
 				
 				ansattDAO.LeggTilAnsatt(ansatt.getBrukerNavn(), ansatt.getForNavn(), ansatt.getEtterNavn(),
-						ansatt.getAnsettelsesDato(), ansatt.getStilling(), ansatt.getLonn());
+						ansatt.getAnsettelsesDato(), ansatt.getStilling(), ansatt.getLonn(), ansatt.getAvdeling());
 			}
 			else
 			{
