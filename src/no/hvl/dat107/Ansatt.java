@@ -48,12 +48,12 @@ public class Ansatt {
 		this.avdeling = avdeling;
 	}
 
-	@OneToMany(mappedBy = "prosjekt")
-	private List<ProsjektAnsatte> deltakelse;
+	@OneToMany(mappedBy = "prosjektAnsatt")
+	private List<ProsjektAnsatte> deltakelseAnsatt;
 	
 	public void LeggTilProsjekt(ProsjektAnsatte prosjekt)
 	{
-		deltakelse.add(prosjekt);
+		deltakelseAnsatt.add(prosjekt);
 	}
 
 	public int getId() {
@@ -120,7 +120,7 @@ public class Ansatt {
 	public String toString() {
 		return "Ansatt [id=" + id + ", brukerNavn=" + brukerNavn + ", forNavn=" + forNavn + ", etterNavn=" + etterNavn
 				+ ", ansettelsesDato=" + ansettelsesDato + ", stilling=" + stilling + ", lonn=" + lonn + ", avdeling="
-				+ avdeling + ", deltakelse=" + deltakelse + "]";
+				+ avdeling + ", deltakelse=" + deltakelseAnsatt + "]";
 	}
 
 

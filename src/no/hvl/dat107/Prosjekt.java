@@ -24,17 +24,17 @@ public class Prosjekt {
 		
 	}
 	
-	@OneToMany(mappedBy = "ansatt")
-	private List<ProsjektAnsatte> deltakelse;
+	@OneToMany(mappedBy = "ansattProsjekt")
+	private List<ProsjektAnsatte> deltakelseProsjekt;
 	
 	public void LeggTilProsjekt(ProsjektAnsatte ansatt)
 	{
-		deltakelse.add(ansatt);
+		deltakelseProsjekt.add(ansatt);
 	}
 	
 	public void fjernAnsatt(ProsjektAnsatte ansatt)
 	{
-		deltakelse.remove(ansatt);
+		deltakelseProsjekt.remove(ansatt);
 	}
 	
 	public Prosjekt(String navn, String beskrivelse) {

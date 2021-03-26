@@ -1,30 +1,19 @@
 package no.hvl.dat107;
 
+import java.io.Serializable;
 
-public class ProsjektAnsattePK {
+public class ProsjektAnsattePK implements Serializable {
 
-	private int ansatt;
-	private int prosjekt;
+	private int ansattId;
+	private int prosjektId;
 	
 	public ProsjektAnsattePK(int ansatt, int prosjekt) {
-		this.ansatt = ansatt;
-		this.prosjekt = prosjekt;
+		this.ansattId = ansatt;
+		this.prosjektId = prosjekt;
 	}
 	
 	public ProsjektAnsattePK() {
 	}
 	
 	
-	public int getAnsatt() {
-		return ansatt;
-	}
-	public void setAnsatt(int ansatt) {
-		this.ansatt = ansatt;
-	}
-	public int getProsjekt() {
-		return prosjekt;
-	}
-	public void setProsjekt(int prosjekt) {
-		this.prosjekt = prosjekt;
-	}
 }

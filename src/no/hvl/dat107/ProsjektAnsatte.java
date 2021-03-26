@@ -13,17 +13,20 @@ import javax.persistence.Table;
 public class ProsjektAnsatte {
 	
 	@Id
-	@ManyToOne
-	@JoinColumn(name = "Ansatt_Id")
-	private Ansatt ansatt;
+	private int ansattId;
 	
 	@Id
+	private int prosjektId;
+	
+	@ManyToOne
+	@JoinColumn(name = "Ansatt_Id")
+	private Ansatt ansattProsjekt;
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "Prosjekt_Id")
-	private Prosjekt prosjekt;
+	private Prosjekt prosjektAnsatt;
 	
-	private int ansattId;
-	private int prosjektId;
 	private String rolle;
 	private int timer;
 	
@@ -34,13 +37,13 @@ public class ProsjektAnsatte {
 	}
 	
 	public ProsjektAnsatte(Ansatt ansatt, Prosjekt prosjekt, String rolle, int timer) {
-		this.ansatt = ansatt;
-		this.prosjekt = prosjekt;
+		this.ansattProsjekt = ansatt;
+		this.prosjektAnsatt = prosjekt;
 		this.rolle = rolle;
 		this.timer = timer;
 		
-		ansatt.LeggTilProsjekt(this);
-		prosjekt.LeggTilProsjekt(this);
+		ansattProsjekt.LeggTilProsjekt(this);
+		prosjektAnsatt.LeggTilProsjekt(this);
 	}
 	
 	public int getAnsattId() {
