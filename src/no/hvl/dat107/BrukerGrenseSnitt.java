@@ -15,7 +15,7 @@ public class BrukerGrenseSnitt {
 		if(s.equals("Ansatt"))
 		{
 			AnsattDAO ansattDAO = new AnsattDAO();
-			String[] ansattOperasjoner = {"Finn Ansatt", "Finn Initialer", "Legg Til", "Avslutt"}; 
+			String[] ansattOperasjoner = {"Finn Ansatt", "Finn Initialer", "Oppdater", "Legg Til", "Avslutt"}; 
 			String l = (String) JOptionPane.showInputDialog(null, "Velg entitet", "Eniteter", JOptionPane.QUESTION_MESSAGE, null, ansattOperasjoner, ansattOperasjoner[0]);
 			if(l.equals("Finn Ansatt"))
 			{
@@ -26,6 +26,14 @@ public class BrukerGrenseSnitt {
 			{
 				String brukernavn = (JOptionPane.showInputDialog("Skriv in initialene til ansatt"));
 				System.out.println(ansattDAO.finnInitialer(brukernavn));
+			}
+			else if(l.equals("Oppdater"))
+			{
+				Ansatt ansatt = new Ansatt();
+				int id = Integer.parseInt(JOptionPane.showInputDialog("Skriv Id til den Ansatte"));
+				ansatt.setStilling(JOptionPane.showInputDialog("Skriv in stillingstittel"));
+				ansatt.setLonn(Integer.parseInt(JOptionPane.showInputDialog("Skriv in lonn")));
+				ansattDAO.oppdaterAnsatt(id, ansatt.getStilling(), ansatt.getLonn());	
 			}
 			else if(l.equals("Legg Til"))
 			{
@@ -39,8 +47,11 @@ public class BrukerGrenseSnitt {
 				ansatt.setStilling(JOptionPane.showInputDialog("Skriv in stillingstittel"));
 				ansatt.setLonn(Integer.parseInt(JOptionPane.showInputDialog("Skriv in lonn")));
 				
+				AvdelingDAO finnAvdeling = new AvdelingDAO();
+				Avdeling avdelingen = finnAvdeling.finnAvdelingMedId(Integer.parseInt(JOptionPane.showInputDialog("Skriv in avdelings id")));
+				
 				ansattDAO.LeggTilAnsatt(ansatt.getBrukerNavn(), ansatt.getForNavn(), ansatt.getEtterNavn(),
-						ansatt.getAnsettelsesDato(), ansatt.getStilling(), ansatt.getLonn(), ansatt.getAvdeling());
+						ansatt.getAnsettelsesDato(), ansatt.getStilling(), ansatt.getLonn(), avdelingen);
 				
 				System.out.println("Ansatt ble lagt til!");
 			}
