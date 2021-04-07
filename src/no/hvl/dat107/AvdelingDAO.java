@@ -37,7 +37,7 @@ private EntityManagerFactory emf;
         
         try {
         
-        	String queryString = "SELECT ad FROM Avdeling ad join ad.ansatte a WHERE a.id = : " + id;
+        	String queryString = "SELECT ad FROM Avdeling ad LEFT JOIN ad.ansatte a WHERE a.id =  "+ id;
         	TypedQuery<Ansatt> query = em.createQuery(queryString, Ansatt.class);
         	return query.getResultList();
         	
