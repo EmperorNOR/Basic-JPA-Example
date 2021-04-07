@@ -27,7 +27,7 @@ public class Ansatt {
 	private int lonn;
 	
 	@ManyToOne
-	@JoinColumn(name = "id", referencedColumnName = "id")
+	@JoinColumn(name = "id", referencedColumnName = "id", insertable=false, updatable=false)
 	private Avdeling avdeling;
 	
 	
@@ -48,7 +48,7 @@ public class Ansatt {
 		this.avdeling = avdeling;
 	}
 
-	@OneToMany(mappedBy = "prosjektAnsatt")
+	@OneToMany(mappedBy = "ansattProsjekt")
 	private List<ProsjektAnsatte> deltakelseAnsatt;
 	
 	public void LeggTilProsjekt(ProsjektAnsatte prosjekt)
@@ -120,7 +120,7 @@ public class Ansatt {
 	public String toString() {
 		return "Ansatt [id=" + id + ", brukerNavn=" + brukerNavn + ", forNavn=" + forNavn + ", etterNavn=" + etterNavn
 				+ ", ansettelsesDato=" + ansettelsesDato + ", stilling=" + stilling + ", lonn=" + lonn + ", avdeling="
-				+ avdeling + ", deltakelse=" + deltakelseAnsatt + "]";
+						+ avdeling.getId() + ", deltakelse=" + deltakelseAnsatt.toString() + "]";
 	}
 
 

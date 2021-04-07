@@ -66,7 +66,7 @@ public class Avdeling {
 
 	@Override
 	public String toString() {
-		return "Avdeling [id=" + id + ", navn=" + navn + ", sjefId=" + this.getSjef().getId() + ", ansatte=" + ansatte + "]";
+		return "Avdeling [id=" + id + ", navn=" + navn + ", sjefId=" + this.getSjef().getId() + ", ansatte=" + ansatte.toString() + "]";
 	}
 	
 	

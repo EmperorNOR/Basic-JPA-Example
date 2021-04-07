@@ -24,7 +24,7 @@ public class Prosjekt {
 		
 	}
 	
-	@OneToMany(mappedBy = "ansattProsjekt")
+	@OneToMany(mappedBy = "prosjektAnsatt")
 	private List<ProsjektAnsatte> deltakelseProsjekt;
 	
 	public void LeggTilProsjekt(ProsjektAnsatte ansatt)

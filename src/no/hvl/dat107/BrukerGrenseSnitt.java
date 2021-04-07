@@ -20,12 +20,12 @@ public class BrukerGrenseSnitt {
 			if(l.equals("Finn Ansatt"))
 			{
 				int nr = Integer.parseInt(JOptionPane.showInputDialog("Skriv in ansattnr"));
-				ansattDAO.finnAnsatt(nr);
+				System.out.println(ansattDAO.finnAnsatt(nr));
 			}
 			else if(l.equals("Finn Initialer"))
 			{
-				String brukernavn = (JOptionPane.showInputDialog("Skriv in ansattnr"));
-				ansattDAO.finnInitialer(brukernavn);
+				String brukernavn = (JOptionPane.showInputDialog("Skriv in initialene til ansatt"));
+				System.out.println(ansattDAO.finnInitialer(brukernavn));
 			}
 			else if(l.equals("Legg Til"))
 			{
@@ -41,6 +41,8 @@ public class BrukerGrenseSnitt {
 				
 				ansattDAO.LeggTilAnsatt(ansatt.getBrukerNavn(), ansatt.getForNavn(), ansatt.getEtterNavn(),
 						ansatt.getAnsettelsesDato(), ansatt.getStilling(), ansatt.getLonn(), ansatt.getAvdeling());
+				
+				System.out.println("Ansatt ble lagt til!");
 			}
 			else
 			{
@@ -52,7 +54,7 @@ public class BrukerGrenseSnitt {
 		{
 			AvdelingDAO avdelingDAO = new AvdelingDAO();
 			
-			avdelingDAO.finnAvdelingMedId(Integer.parseInt(JOptionPane.showInputDialog("Skriv in avdelingsnummer")));
+			System.out.println(avdelingDAO.finnAvdelingMedId(Integer.parseInt(JOptionPane.showInputDialog("Skriv in avdelingsnummer"))));
 		}
 		else if(s.equals("Prosjekt"))
 		{
