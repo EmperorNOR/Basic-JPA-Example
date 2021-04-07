@@ -12,17 +12,13 @@ import javax.persistence.Table;
 @IdClass(ProsjektAnsattePK.class)
 public class ProsjektAnsatte {
 	
-	@Id
-	private int ansattId;
 	
 	@Id
-	private int prosjektId;
-	
 	@ManyToOne
 	@JoinColumn(name = "Ansatt_Id")
 	private Ansatt ansattProsjekt;
 	
-	
+	@Id
 	@ManyToOne
 	@JoinColumn(name = "Prosjekt_Id")
 	private Prosjekt prosjektAnsatt;
@@ -46,18 +42,6 @@ public class ProsjektAnsatte {
 		prosjektAnsatt.LeggTilProsjekt(this);
 	}
 	
-	public int getAnsattId() {
-		return ansattId;
-	}
-	public void setAnsattId(int ansattId) {
-		this.ansattId = ansattId;
-	}
-	public int getProsjektId() {
-		return prosjektId;
-	}
-	public void setProsjektId(int prosjektId) {
-		this.prosjektId = prosjektId;
-	}
 	public String getRolle() {
 		return rolle;
 	}

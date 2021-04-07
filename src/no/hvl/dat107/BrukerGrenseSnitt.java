@@ -16,7 +16,7 @@ public class BrukerGrenseSnitt {
 		{
 			AnsattDAO ansattDAO = new AnsattDAO();
 			String[] ansattOperasjoner = {"Finn Ansatt", "Finn Initialer", "Oppdater", "Legg Til", "Avslutt"}; 
-			String l = (String) JOptionPane.showInputDialog(null, "Velg entitet", "Eniteter", JOptionPane.QUESTION_MESSAGE, null, ansattOperasjoner, ansattOperasjoner[0]);
+			String l = (String) JOptionPane.showInputDialog(null, "Velg handling", "Handlinger", JOptionPane.QUESTION_MESSAGE, null, ansattOperasjoner, ansattOperasjoner[0]);
 			if(l.equals("Finn Ansatt"))
 			{
 				int nr = Integer.parseInt(JOptionPane.showInputDialog("Skriv in ansattnr"));
@@ -64,8 +64,31 @@ public class BrukerGrenseSnitt {
 		else if(s.equals("Avdeling"))
 		{
 			AvdelingDAO avdelingDAO = new AvdelingDAO();
+			String[] avdelingOperasjoner = {"Finn Avdeling med Id", "List alle Ansatte i Avdeling", "Legg til Avdeling", "Avslutt"}; 
+			String a = (String) JOptionPane.showInputDialog(null, "Velg handling", "Ha", JOptionPane.QUESTION_MESSAGE, null, avdelingOperasjoner, avdelingOperasjoner[0]);
+			if(a.equals("Finn Avdeling med Id"))
+			{
+				System.out.println(avdelingDAO.finnAvdelingMedId(Integer.parseInt(JOptionPane.showInputDialog("Skriv in avdelingsnummer"))));
+			}
+			else if(a.equals("List alle Ansatte i Avdeling"))
+			{
+				System.out.println(avdelingDAO.alleAnsatte(Integer.parseInt(JOptionPane.showInputDialog("Skriv in avdelingsnummer"))).toString());
+			}
+			else if(a.equals("Legg til Avdeling"))
+			{
+				AnsattDAO ansattDAO = new AnsattDAO();
+				Avdeling avdelingen = new Avdeling();
+				avdelingen.setNavn(JOptionPane.showInputDialog("Skriv in navn paa avdelingen"));
+				Ansatt sjefen = ansattDAO.finnAnsatt(Integer.parseInt(JOptionPane.showInputDialog("Skriv in id til sjef")));
+				avdelingen.setSjef(sjefen);
+				avdelingDAO.LeggTilAvdeling(avdelingen.getNavn(), avdelingen.getSjef());
 			
-			System.out.println(avdelingDAO.finnAvdelingMedId(Integer.parseInt(JOptionPane.showInputDialog("Skriv in avdelingsnummer"))));
+				
+			}
+			else
+			{
+				System.exit(0);
+			}
 		}
 		else if(s.equals("Prosjekt"))
 		{

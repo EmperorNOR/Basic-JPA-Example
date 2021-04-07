@@ -3,6 +3,7 @@ package no.hvl.dat107;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +25,7 @@ public class Prosjekt {
 		
 	}
 	
-	@OneToMany(mappedBy = "prosjektAnsatt")
+	@OneToMany(mappedBy = "prosjektAnsatt", fetch = FetchType.EAGER)
 	private List<ProsjektAnsatte> deltakelseProsjekt;
 	
 	public void LeggTilProsjekt(ProsjektAnsatte ansatt)

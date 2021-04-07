@@ -10,8 +10,6 @@ public class Main {
 		BrukerGrenseSnitt meny = new BrukerGrenseSnitt();
 		meny.grenseSnitt();
 		
-		//System.out.println(bedrift.finnAnsatt(2));
-		
 	}
 	
 }

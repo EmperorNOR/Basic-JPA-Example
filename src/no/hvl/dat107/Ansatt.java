@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,9 +28,8 @@ public class Ansatt {
 	private int lonn;
 	
 	@ManyToOne
-	@JoinColumn(name = "id", referencedColumnName = "id", insertable=false, updatable=false)
+	@JoinColumn(name = "avdeling_id", referencedColumnName = "id")
 	private Avdeling avdeling;
-	
 	
 	public Ansatt()
 	{
@@ -48,7 +48,7 @@ public class Ansatt {
 		this.avdeling = avdeling;
 	}
 
-	@OneToMany(mappedBy = "ansattProsjekt")
+	@OneToMany(mappedBy = "ansattProsjekt", fetch = FetchType.EAGER)
 	private List<ProsjektAnsatte> deltakelseAnsatt;
 	
 	public void LeggTilProsjekt(ProsjektAnsatte prosjekt)

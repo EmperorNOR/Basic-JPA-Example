@@ -67,8 +67,14 @@ public class AnsattDAO {
 				a.setLonn(lonn);
 				tx.commit();
 	        	return a;
-
-	        } finally {
+	        }
+			   catch (Throwable e)
+            {
+            	e.printStackTrace();
+            	tx.rollback();
+            	return null;
+            }
+			finally {
 	            em.close();
 	        }
 		}
@@ -84,8 +90,15 @@ public class AnsattDAO {
 				em.persist(a);
 				tx.commit();
 	        	return a;
-
-	        } finally {
+	        	
+	        }
+			   catch (Throwable e)
+            {
+            	e.printStackTrace();
+            	tx.rollback();
+            	return null;
+            }
+			finally {
 	            em.close();
 	        }
 		}
