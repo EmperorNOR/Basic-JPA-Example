@@ -49,9 +49,9 @@ public class BrukerGrenseSnitt {
 				
 				AvdelingDAO finnAvdeling = new AvdelingDAO();
 				Avdeling avdelingen = finnAvdeling.finnAvdelingMedId(Integer.parseInt(JOptionPane.showInputDialog("Skriv in avdelings id")));
+				ansatt.setAvdeling(avdelingen);
 				
-				ansattDAO.LeggTilAnsatt(ansatt.getBrukerNavn(), ansatt.getForNavn(), ansatt.getEtterNavn(),
-						ansatt.getAnsettelsesDato(), ansatt.getStilling(), ansatt.getLonn(), avdelingen);
+				ansattDAO.LeggTilAnsatt(ansatt);
 				
 				System.out.println("Ansatt ble lagt til!");
 			}
@@ -65,7 +65,7 @@ public class BrukerGrenseSnitt {
 		{
 			AvdelingDAO avdelingDAO = new AvdelingDAO();
 			String[] avdelingOperasjoner = {"Finn Avdeling med Id", "List alle Ansatte i Avdeling", "Legg til Avdeling", "Avslutt"}; 
-			String a = (String) JOptionPane.showInputDialog(null, "Velg handling", "Ha", JOptionPane.QUESTION_MESSAGE, null, avdelingOperasjoner, avdelingOperasjoner[0]);
+			String a = (String) JOptionPane.showInputDialog(null, "Velg handling", "Handlinger", JOptionPane.QUESTION_MESSAGE, null, avdelingOperasjoner, avdelingOperasjoner[0]);
 			if(a.equals("Finn Avdeling med Id"))
 			{
 				System.out.println(avdelingDAO.finnAvdelingMedId(Integer.parseInt(JOptionPane.showInputDialog("Skriv in avdelingsnummer"))));
@@ -92,7 +92,37 @@ public class BrukerGrenseSnitt {
 		}
 		else if(s.equals("Prosjekt"))
 		{
-			JOptionPane.showMessageDialog(null, "Funksjonalitet ikke implementert");
+			String[] prosjektOperasjoner = {"Legg til Prosjekt", "Registrer deltakelse", "Fore Timer", "Utskrift Prosjekt", "Avslutt"}; 
+			String p = (String) JOptionPane.showInputDialog(null, "Velg handling", "Handlinger", JOptionPane.QUESTION_MESSAGE, null, prosjektOperasjoner, prosjektOperasjoner[0]);
+			ProsjektDAO prosjektDAO = new ProsjektDAO();
+			if(p.equals("Legg til Prosjekt"))
+			{
+				Prosjekt prosjektet = new Prosjekt();
+				prosjektet.setNavn(JOptionPane.showInputDialog("Skriv in prosjekt navn"));
+				prosjektet.setBeskrivelse(JOptionPane.showInputDialog("Skriv en beskrivelse av prosjektet"));
+				System.out.println(prosjektDAO.LeggTilProsjekt(prosjektet));
+			}
+			else if(p.equals("Registrer deltakelse"))
+			{
+				int ansatteId = Integer.parseInt(JOptionPane.showInputDialog("Skriv in ansattid"));
+				int prosjektId = Integer.parseInt(JOptionPane.showInputDialog("Skriv in prosjektid"));
+				String rolle = JOptionPane.showInputDialog("Skriv rollen til den ansatte i prosjektet");
+				int timer = Integer.parseInt(JOptionPane.showInputDialog("Skriv antall timer ansatte har jobbet paa prosjektet"));
+				prosjektDAO.RegistrerDeltakelse(prosjektId, ansatteId, rolle, timer);
+				System.out.println("Prosjektet ble registrert!");
+			}
+			else if(p.equals("Fore Timer"))
+			{
+				int ansatteId = Integer.parseInt(JOptionPane.showInputDialog("Skriv in ansattid"));
+				int prosjektId = Integer.parseInt(JOptionPane.showInputDialog("Skriv in prosjektid"));
+				int timer = Integer.parseInt(JOptionPane.showInputDialog("Skriv antall timer ansatte har jobbet paa prosjektet"));
+				prosjektDAO.ForeTimer(prosjektId, ansatteId, timer);
+				System.out.println("Antall timer er oppdatert!");
+			}
+			else if(p.equals("Utskrift Prosjekt"))
+			{
+				System.out.println(prosjektDAO.alleProsjekter().toString());
+			}
 		}
 		else
 		{

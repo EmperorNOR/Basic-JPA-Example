@@ -16,7 +16,4 @@ public class ProsjektAnsattePK implements Serializable {
 		this.prosjektAnsatt = prosjekt;
 	}
 	
-
-	
-	
 }

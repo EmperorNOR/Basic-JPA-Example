@@ -1,13 +1,11 @@
 package no.hvl.dat107;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 public class AvdelingDAO {
@@ -37,7 +35,7 @@ private EntityManagerFactory emf;
         
         try {
         
-        	String queryString = "SELECT ad FROM Avdeling ad LEFT JOIN ad.ansatte a WHERE a.id =  "+ id;
+        	String queryString = "SELECT ad FROM Avdeling ad LEFT JOIN ad.ansatte a WHERE a.id = "+ id;
         	TypedQuery<Ansatt> query = em.createQuery(queryString, Ansatt.class);
         	return query.getResultList();
         	

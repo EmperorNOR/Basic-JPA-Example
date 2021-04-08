@@ -1,6 +1,5 @@
 package no.hvl.dat107;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -34,7 +33,7 @@ public class AnsattDAO {
 	        EntityManager em = emf.createEntityManager();
 	        
 	        try {
-	        	String queryString = "SELECT a FROM Ansatt a WHERE a.brukerNavn = :brukerNavn";
+	        	String queryString = "SELECT a FROM Ansatt a WHERE a.brukerNavn = " + "'" + brukerNavn + "'";
 	        	TypedQuery<Ansatt> query = em.createQuery(queryString, Ansatt.class);
 	        	return query.getResultList();
 	        } finally {
@@ -79,14 +78,13 @@ public class AnsattDAO {
 	        }
 		}
 		
-		public Ansatt LeggTilAnsatt(String brukernavn, String fornavn, String etternavn, 
-				LocalDate ansettelsesdato, String stilling, int lonn, Avdeling avdeling)
+		public Ansatt LeggTilAnsatt(Ansatt ansatt)
 		{
 			EntityManager em = emf.createEntityManager();
 			EntityTransaction tx = em.getTransaction();
 			try {
 				tx.begin();
-				Ansatt a = new Ansatt(brukernavn, fornavn, etternavn, ansettelsesdato, stilling, lonn, avdeling);
+				Ansatt a = ansatt;
 				em.persist(a);
 				tx.commit();
 	        	return a;
